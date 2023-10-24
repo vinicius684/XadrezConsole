@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace XadrezConsole.Tabuleiro
+namespace XadrezConsole.Tabuleiro.Exceptions
 {
-    internal class Posicao
+    internal class TabuleiroException
     {
     }
 }
