@@ -11,20 +11,11 @@ namespace CSharpCursoNelioAlves.LogicaProgCSharp
         static void Main(string[] args)
         {
 
-            try
-            {
-                TipoTabuleiro tab = new TipoTabuleiro(8, 8);
+            PosicaoXadrez pos = new PosicaoXadrez('a', 1);
 
-                tab.ColocarPeca(new Torre(tab, Cor.Preta), new Posicao(0, 0));
-                tab.ColocarPeca(new Torre(tab, Cor.Preta), new Posicao(1, 9));
-                tab.ColocarPeca(new Rei(tab, Cor.Preta), new Posicao(0, 0));
+            Console.WriteLine(pos);
 
-                Tela.ImprimirTabuleiro(tab);
-            }catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-
+            Console.WriteLine();
         }
     }
 }
