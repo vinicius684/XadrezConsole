@@ -15,13 +15,13 @@ namespace XadrezConsole
             {
                 for (int j = 0; j < tab.Colunas; j++)
                 {
-                    if (tab.Peca(i, j) == null)
+                    if (tab.Peca(new Posicao(i, j)) == null)
                     {
                         Console.Write("- ");
                     }
                     else
                     {
-                        Console.Write(tab.Peca(i, j) + " ");
+                        Console.Write(tab.Peca(new Posicao(i, j)) + " ");
                     }
                 }
                 Console.WriteLine();
