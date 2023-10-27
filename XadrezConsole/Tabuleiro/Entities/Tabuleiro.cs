@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using XadrezConsole.Tabuleiro.Exceptions;
+using XadrezConsole.Tabuleiro.Entities.Exceptions;
 
 namespace XadrezConsole.Tabuleiro.Entities
 {
@@ -11,13 +11,13 @@ namespace XadrezConsole.Tabuleiro.Entities
     {
         public int Linhas { get; set; }
         public int Colunas { get; set; }
-        private Peca[,] _quadrados;//apenas o tabuleiro mexe nesse atributo / quadrados tem que caber no tipo Peca
+        private Peca[,] _peca;//apenas o tabuleiro mexe nesse atributo / todas as casas são peças, porém vazias ou preenchidas
 
         public TipoTabuleiro(int linhas, int colunas)
         {
             Linhas = linhas;
             Colunas = colunas;
-            _quadrados = new Peca[Linhas, Colunas]; //instanciando uma matriz do tipo peça
+            _peca = new Peca[Linhas, Colunas]; //instanciando uma matriz do tipo peça
         }
 
         public void ColocarPeca(Peca p, Posicao pos)
@@ -26,13 +26,24 @@ namespace XadrezConsole.Tabuleiro.Entities
             {
                 throw new TabuleiroException("Já existe peça nessa posição!");
             }
-            _quadrados[pos.Linha, pos.Coluna] = p; //adicionando peça em tal posicao da matriz
+            _peca[pos.Linha, pos.Coluna] = p; //adicionando peça em tal posicao da matriz
             p.Posicao = pos; //adicionando posição tal na peça
+        }
+
+        public Peca RetirarPeca(Posicao pos) {
+            if (!ExistePeca(pos))
+            {
+                return null;
+            }
+            Peca aux = Peca(pos);
+            aux.Posicao = null;
+            _peca[pos.Linha, pos.Coluna] = null; //limpando posição do tabuleiro
+            return aux; //retornando peça retirada e com posição nula
         }
 
         public Peca Peca(Posicao pos)
         { //retorna a peça na posição poslinha e poscoluna
-            return _quadrados[pos.Linha, pos.Coluna];
+            return _peca[pos.Linha, pos.Coluna];
         }
 
         public bool PosicaoValida(Posicao pos)

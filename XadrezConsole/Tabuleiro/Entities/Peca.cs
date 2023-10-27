@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using XadrezConsole.Tabuleiro.Enums;
+using XadrezConsole.Tabuleiro.Entities.Enums;
 
 namespace XadrezConsole.Tabuleiro.Entities
 {
@@ -22,6 +22,10 @@ namespace XadrezConsole.Tabuleiro.Entities
             CorPeca = corPeca;
             QtdMovimentos = 0;
             Tabuleiro = tabuleiro;
+        }
+
+        public void IncrementarQtdMovimentos() {
+            QtdMovimentos++;
         }
     }
 }

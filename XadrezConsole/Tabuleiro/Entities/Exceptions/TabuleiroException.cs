@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace XadrezConsole.Tabuleiro.Exceptions
+namespace XadrezConsole.Tabuleiro.Entities.Exceptions
 {
     internal class TabuleiroException : Exception
     {
 
-        public TabuleiroException(string msg) :base(msg) { }
+        public TabuleiroException(string msg) : base(msg) { }
     }
 }

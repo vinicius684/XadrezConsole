@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace XadrezConsole.Tabuleiro.Enums
+namespace XadrezConsole.Tabuleiro.Entities.Enums
 {
     enum Cor
     {
-        Branca, 
+        Branca,
         Preta,
         Azul,
         Vermelha

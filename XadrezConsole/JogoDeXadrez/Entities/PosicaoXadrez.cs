@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using XadrezConsole.Tabuleiro.Entities;
 
 namespace XadrezConsole.JogoDeXadrez.Entities
 {
@@ -16,9 +17,13 @@ namespace XadrezConsole.JogoDeXadrez.Entities
             Linha = linha;
         }
 
+        public Posicao ToPosicao() {
+            return new Posicao(8 - Linha, Coluna - 'a'); //internamente 'a'(1) é uma numero b - a = pos 1.... /  8 - 7 = pos 1
+        }
+
         public override string ToString()
         {
-            return "" + Coluna + Linha;
+            return "" + Linha + Coluna;
         }
     }
 }

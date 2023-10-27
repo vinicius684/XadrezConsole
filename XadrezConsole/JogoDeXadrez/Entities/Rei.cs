@@ -1,5 +1,5 @@
 ﻿using XadrezConsole.Tabuleiro.Entities;
-using XadrezConsole.Tabuleiro.Enums;
+using XadrezConsole.Tabuleiro.Entities.Enums;
 
 namespace XadrezConsole.JogoDeXadrez.Entities
 {
