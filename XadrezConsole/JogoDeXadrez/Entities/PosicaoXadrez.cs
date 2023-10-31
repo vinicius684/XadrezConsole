@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using XadrezConsole.Tabuleiro.Entities;
+﻿using XadrezConsole.Tabuleiro.Entities;
 
 namespace XadrezConsole.JogoDeXadrez.Entities
 {

@@ -3,7 +3,7 @@ using XadrezConsole.Tabuleiro.Entities;
 
 namespace XadrezConsole.JogoDeXadrez.Entities
 {
-    internal class Cavalo : Peca
+    internal class Cavalo 
     {
     }
 }

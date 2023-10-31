@@ -3,6 +3,7 @@ using XadrezConsole;
 using XadrezConsole.JogoDeXadrez.Entities;
 using XadrezConsole.Tabuleiro.Entities;
 using XadrezConsole.Tabuleiro.Entities.Enums;
+using XadrezConsole.Tabuleiro.Entities.Exceptions;
 
 namespace CSharpCursoNelioAlves.LogicaProgCSharp
 {
@@ -17,15 +18,34 @@ namespace CSharpCursoNelioAlves.LogicaProgCSharp
 
                 while (!partida.terminada)//não estiver terminada
                 {
-                    Console.Clear();
-                    Tela.ImprimirTabuleiro(partida.Tabuleiro);
+                    try
+                    {
+                        Console.Clear();
+                        Tela.ImprimirTabuleiro(partida.Tabuleiro);
+                        Console.WriteLine();
+                        Console.WriteLine("Turno: " + partida.Turno);
+                        Console.WriteLine("Aguardando jogada: " + partida.JogadorAtual);
 
-                    Console.Write("Origem (ColunaLinha): ");
-                    Posicao origem = Tela.LerPosicaoXadrez().ToPosicao();
-                    Console.Write("Destino (ColunaLinha): ");
-                    Posicao destino = Tela.LerPosicaoXadrez().ToPosicao();
+                        Console.Write("Origem (ColunaLinha): ");
+                        Posicao origem = Tela.LerPosicaoXadrez().ToPosicao();
+                        partida.ValdiarPosicaoDeOrigem(origem);
 
-                    partida.executaMovimento(origem, destino);
+                        bool[,] posicoesPossiveis = partida.Tabuleiro.Peca(origem).MovimentosPossiveis();
+
+                        Console.Clear();
+                        Tela.ImprimirTabuleiro(partida.Tabuleiro, posicoesPossiveis);
+
+                        Console.Write("Destino (ColunaLinha): ");
+                        Posicao destino = Tela.LerPosicaoXadrez().ToPosicao();
+                        partida.ValidarPosicaoDeDestino(origem, destino);
+
+                        partida.RealizaJogada(origem, destino);
+                    }
+                    catch(TabuleiroException e) {
+                        Console.WriteLine(e.Message);
+                        Console.ReadLine();//Apertar Enter
+                    }
+
                 }
 
             }
@@ -34,6 +54,6 @@ namespace CSharpCursoNelioAlves.LogicaProgCSharp
                 Console.WriteLine(ex.Message);
             }
 
-    }
+        }
     }
 }
